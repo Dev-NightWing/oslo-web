@@ -7,31 +7,27 @@ Deploy separately on Railway as a Web service.
 Required env vars: DATABASE_URL
 """
 
-import asyncpg
-import asyncio
 import os
 import time
+import psycopg2
+import psycopg2.extras
 from flask import Flask, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder=".")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Cache stats for 60 seconds — avoid hammering the DB on every request
+# Cache stats for 60 seconds
 _cache = {"data": None, "ts": 0}
 
 
-def fetch_stats_sync():
-    """Run async DB fetch in a fresh event loop — safe with Gunicorn."""
-    async def _fetch():
-        conn = await asyncpg.connect(DATABASE_URL)
-        row  = await conn.fetchrow("SELECT * FROM bot_stats WHERE id = 1")
-        await conn.close()
-        return dict(row) if row else {}
-    loop = asyncio.new_event_loop()
-    try:
-        return loop.run_until_complete(_fetch())
-    finally:
-        loop.close()
+def fetch_stats():
+    conn = psycopg2.connect(DATABASE_URL)
+    cur  = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+    cur.execute("SELECT * FROM bot_stats WHERE id = 1")
+    row = cur.fetchone()
+    cur.close()
+    conn.close()
+    return dict(row) if row else {}
 
 
 @app.route("/api/stats")
@@ -39,7 +35,7 @@ def stats():
     now = time.time()
     if _cache["data"] is None or now - _cache["ts"] > 60:
         try:
-            _cache["data"] = fetch_stats_sync()
+            _cache["data"] = fetch_stats()
             _cache["ts"]   = now
         except Exception as e:
             return jsonify({"error": str(e)}), 500
