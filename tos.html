@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Oslo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--cream:#fdf6ee;--brown:#3d2b1f;--brown-mid:#7a5c4a;--brown-light:#c4a88e;--coral:#ff6b4a;--border:rgba(61,43,31,0.12);--warm-white:#fffbf5}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown);line-height:1.7;padding:0}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);background:var(--cream)}
+    .nav-logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;color:var(--brown);text-decoration:none}
+    .nav-back{font-size:.9rem;color:var(--brown-mid);text-decoration:none}
+    .nav-back:hover{color:var(--coral)}
+    .container{max-width:720px;margin:0 auto;padding:4rem 2rem 6rem}
+    .page-label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:.75rem}
+    h1{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:900;color:var(--brown);margin-bottom:.5rem;line-height:1.1}
+    .updated{font-size:.85rem;color:var(--brown-light);margin-bottom:3rem}
+    h2{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:var(--brown);margin:2.5rem 0 .75rem}
+    p{color:var(--brown-mid);font-size:.95rem;margin-bottom:1rem}
+    ul{color:var(--brown-mid);font-size:.95rem;padding-left:1.5rem;margin-bottom:1rem}
+    ul li{margin-bottom:.4rem}
+    .callout{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .callout p{margin:0;font-size:.9rem}
+    a{color:var(--coral);text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--brown-light);font-size:.85rem}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">♟ Oslo</a>
+  <a href="/" class="nav-back">← Back to Oslo</a>
+</nav>
+
+<div class="container">
+  <p class="page-label">Legal</p>
+  <h1>Terms of Service</h1>
+  <p class="updated">Last updated: April 2026</p>
+
+  <p>These Terms of Service govern your use of Oslo, a Discord bot that provides chess puzzle training. By adding Oslo to your server or using its commands, you agree to these terms.</p>
+
+  <h2>1. What Oslo Does</h2>
+  <p>Oslo is a chess puzzle training bot. It allows users in a Discord server to:</p>
+  <ul>
+    <li>Request and solve chess puzzles from the Lichess open database</li>
+    <li>Earn points based on puzzle difficulty and solve quality</li>
+    <li>View personal statistics and compete on server and global leaderboards</li>
+    <li>Filter puzzles by difficulty level and tactical theme</li>
+  </ul>
+
+  <h2>2. Admin Commands</h2>
+  <div class="callout">
+    <p>Oslo includes a small set of admin-only commands restricted to the bot developer. These commands are <strong>entirely about Oslo's own operation</strong> and have no ability to affect your server, its members, its channels, or its settings in any way.</p>
+  </div>
+  <p>Admin commands include:</p>
+  <ul>
+    <li><strong>!sleep / !wake</strong> — temporarily pause or resume Oslo's puzzle responses globally</li>
+    <li><strong>!adminstatus</strong> — view Oslo's operational stats (active puzzles, total solves, database status)</li>
+    <li><strong>!importlegacy</strong> — link historical user data to the current server's leaderboard</li>
+    <li><strong>!exportdata</strong> — export Oslo's own database for backup or migration purposes</li>
+  </ul>
+  <p>None of these commands can delete messages, modify roles, ban or kick members, alter channel settings, or interact with your server in any structural way. Oslo's permissions are intentionally minimal — it only needs to view channels, send messages, attach files, and read message history in the channels it's used in.</p>
+
+  <h2>3. Acceptable Use</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Attempt to exploit, abuse, or spam Oslo's commands to degrade performance for other users</li>
+    <li>Use Oslo in servers that violate Discord's Terms of Service</li>
+    <li>Attempt to manipulate leaderboard scores through exploits or bugs</li>
+  </ul>
+  <p>If you discover a bug or exploit, please report it rather than using it.</p>
+
+  <h2>4. Availability</h2>
+  <p>Oslo is currently provided free of charge as a student-developed project. While every effort is made to keep it running reliably, we do not guarantee uninterrupted availability. Oslo may be updated, restarted, or temporarily unavailable for maintenance at any time. Core puzzle functionality will always remain free. Premium features, if introduced in the future, will be clearly communicated in advance.</p>
+
+  <h2>5. Changes to These Terms</h2>
+  <p>These terms may be updated as Oslo evolves. Any meaningful changes will be reflected in the updated date at the top of this page. Updates will only ever clarify existing behaviour, reflect new features, or communicate changes to pricing — never to introduce harmful clauses or retroactively change what you agreed to.</p>
+
+  <h2>6. Contact</h2>
+  <p>Questions about these terms? Reach out via the <a href="https://github.com/Dev-NightWing/oslo-chess-trainer" target="_blank">GitHub repository</a>.</p>
+</div>
+
+<footer>Oslo — Discord Chess Puzzle Trainer · CC BY-NC 4.0</footer>
+
+</body>
+</html>

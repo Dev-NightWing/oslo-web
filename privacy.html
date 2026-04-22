@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Oslo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--cream:#fdf6ee;--brown:#3d2b1f;--brown-mid:#7a5c4a;--brown-light:#c4a88e;--coral:#ff6b4a;--border:rgba(61,43,31,0.12);--warm-white:#fffbf5;--green:#2d6a4f;--green-light:#e8f5ef}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--brown);line-height:1.7;padding:0}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);background:var(--cream)}
+    .nav-logo{font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;color:var(--brown);text-decoration:none}
+    .nav-back{font-size:.9rem;color:var(--brown-mid);text-decoration:none}
+    .nav-back:hover{color:var(--coral)}
+    .container{max-width:720px;margin:0 auto;padding:4rem 2rem 6rem}
+    .page-label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);margin-bottom:.75rem}
+    h1{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:900;color:var(--brown);margin-bottom:.5rem;line-height:1.1}
+    .updated{font-size:.85rem;color:var(--brown-light);margin-bottom:3rem}
+    h2{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:700;color:var(--brown);margin:2.5rem 0 .75rem}
+    p{color:var(--brown-mid);font-size:.95rem;margin-bottom:1rem}
+    ul{color:var(--brown-mid);font-size:.95rem;padding-left:1.5rem;margin-bottom:1rem}
+    ul li{margin-bottom:.4rem}
+    .callout{background:var(--green-light);border:1px solid rgba(45,106,79,0.2);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .callout p{margin:0;font-size:.9rem;color:var(--green)}
+    .callout strong{color:var(--green)}
+    .neutral{background:var(--warm-white);border:1px solid var(--border);border-radius:14px;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .neutral p{margin:0;font-size:.9rem}
+    a{color:var(--coral);text-decoration:none}
+    a:hover{text-decoration:underline}
+    footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--brown-light);font-size:.85rem}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">♟ Oslo</a>
+  <a href="/" class="nav-back">← Back to Oslo</a>
+</nav>
+
+<div class="container">
+  <p class="page-label">Legal</p>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: April 2026</p>
+
+  <div class="callout">
+    <p><strong>Short version:</strong> Oslo only stores what it needs to run the puzzle leaderboard. It does not read your messages, collect personal information, or share anything with third parties. Ever.</p>
+  </div>
+
+  <h2>1. What We Collect</h2>
+  <p>Oslo stores the minimum data required to provide its leaderboard and scoring features:</p>
+  <ul>
+    <li><strong>Discord User ID</strong> — a numeric identifier assigned by Discord. Not your username, email, or any personal information.</li>
+    <li><strong>Puzzle solve count</strong> — how many puzzles you have completed</li>
+    <li><strong>Score</strong> — your accumulated puzzle score based on difficulty and performance</li>
+    <li><strong>Streak and best streak</strong> — consecutive puzzle solve counts</li>
+    <li><strong>Best puzzle rating</strong> — the highest rated puzzle you have solved</li>
+    <li><strong>Hints used</strong> — how many hints you have requested</li>
+    <li><strong>Server membership</strong> — which servers you have solved puzzles in, used to generate server-specific leaderboards</li>
+  </ul>
+
+  <h2>2. What We Do Not Collect</h2>
+  <div class="neutral">
+    <p>Oslo does <strong>not</strong> collect, read, store, or process: your username or display name (fetched live from Discord only for leaderboard display), message content beyond puzzle move commands, direct messages, email addresses, IP addresses, or any information about non-puzzle interactions.</p>
+  </div>
+  <p>Oslo only reads messages that start with <code>-</code> (puzzle move input) or begin with <code>!</code> (bot commands) in channels where it is actively used. It does not monitor general conversation.</p>
+
+  <h2>3. How We Use Your Data</h2>
+  <p>The data Oslo stores is used exclusively to:</p>
+  <ul>
+    <li>Display your personal stats via <code>!profile</code></li>
+    <li>Show server and global leaderboards</li>
+    <li>Track your puzzle streak and scoring across sessions</li>
+  </ul>
+  <p>Your data is never sold, shared, rented, or disclosed to any third party for any purpose.</p>
+
+  <h2>4. Data Storage</h2>
+  <p>Oslo's data is stored in a PostgreSQL database hosted on Railway. Data is retained for as long as Oslo operates. If you would like your data removed, contact us via the GitHub repository and it will be removed in a reasonable timeframe.</p>
+
+  <h2>5. Third-Party Services</h2>
+  <p>Oslo uses the following third-party services:</p>
+  <ul>
+    <li><strong>Discord</strong> — the platform Oslo operates on. Subject to <a href="https://discord.com/privacy" target="_blank">Discord's Privacy Policy</a>.</li>
+    <li><strong>Railway</strong> — cloud hosting for the bot and database. No user data is processed by Railway beyond what is necessary to run the application.</li>
+    <li><strong>Lichess</strong> — puzzle data sourced from the Lichess open database. No user data is sent to Lichess.</li>
+  </ul>
+
+  <h2>6. Children's Privacy</h2>
+  <p>Oslo does not knowingly collect data from users under 13. Use of Oslo is subject to Discord's minimum age requirements.</p>
+
+  <h2>7. Changes to This Policy</h2>
+  <p>This policy may be updated as Oslo evolves. The date at the top reflects the most recent revision.</p>
+
+  <h2>8. Contact</h2>
+  <p>Questions about this privacy policy or requests to delete your data? Open an issue on the <a href="https://github.com/Dev-NightWing/oslo-chess-trainer" target="_blank">GitHub repository</a>.</p>
+</div>
+
+<footer>Oslo — Discord Chess Puzzle Trainer · CC BY-NC 4.0</footer>
+
+</body>
+</html>
