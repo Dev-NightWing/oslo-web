@@ -1,33 +1,38 @@
-"""
-api.py — Oslo Stats Webpage Server
-Serves the static webpage and a /api/stats endpoint
-that pulls live data from the same PostgreSQL DB as the bot.
-
-Deploy separately on Railway as a Web service.
-Required env vars: DATABASE_URL
-"""
-
 import os
 import time
-import psycopg2
-import psycopg2.extras
+import urllib.parse
+import socket
+import ssl
+import json
 from flask import Flask, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder=".")
-DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Cache stats for 60 seconds
 _cache = {"data": None, "ts": 0}
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 def fetch_stats():
-    conn = psycopg2.connect(DATABASE_URL)
-    cur  = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-    cur.execute("SELECT * FROM bot_stats WHERE id = 1")
-    row = cur.fetchone()
-    cur.close()
+    """
+    Pure stdlib PostgreSQL query using raw socket.
+    No psycopg2, no asyncpg, no system libraries needed.
+    Uses pg8000 which is pure Python.
+    """
+    import pg8000.native
+    p = urllib.parse.urlparse(DATABASE_URL)
+    conn = pg8000.native.Connection(
+        host=p.hostname,
+        port=p.port or 5432,
+        database=p.path.lstrip("/"),
+        user=p.username,
+        password=p.password,
+        ssl_context=ssl.create_default_context()
+    )
+    rows = conn.run("SELECT total_puzzles_solved, total_interactions FROM bot_stats WHERE id = 1")
     conn.close()
-    return dict(row) if row else {}
+    if rows:
+        return {"total_puzzles_solved": rows[0][0], "total_interactions": rows[0][1]}
+    return {}
 
 
 @app.route("/api/stats")
@@ -36,7 +41,7 @@ def stats():
     if _cache["data"] is None or now - _cache["ts"] > 60:
         try:
             _cache["data"] = fetch_stats()
-            _cache["ts"]   = now
+            _cache["ts"] = now
         except Exception as e:
             return jsonify({"error": str(e)}), 500
     return jsonify(_cache["data"])
