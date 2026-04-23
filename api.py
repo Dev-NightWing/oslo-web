@@ -1,32 +1,27 @@
 import os
 import time
 import urllib.parse
-import socket
 import ssl
-import json
 from flask import Flask, jsonify, send_from_directory
 
 app = Flask(__name__, static_folder=".")
-
 _cache = {"data": None, "ts": 0}
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 def fetch_stats():
-    """
-    Pure stdlib PostgreSQL query using raw socket.
-    No psycopg2, no asyncpg, no system libraries needed.
-    Uses pg8000 which is pure Python.
-    """
     import pg8000.native
     p = urllib.parse.urlparse(DATABASE_URL)
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
     conn = pg8000.native.Connection(
         host=p.hostname,
         port=p.port or 5432,
         database=p.path.lstrip("/"),
         user=p.username,
         password=p.password,
-        ssl_context=ssl.create_default_context()
+        ssl_context=ctx
     )
     rows = conn.run("SELECT total_puzzles_solved, total_interactions FROM bot_stats WHERE id = 1")
     conn.close()
